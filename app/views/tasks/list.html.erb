@@ -1,0 +1,20 @@
+<a href="<%= nueva_tarea_url %>">Crear tarea</a>
+
+<ul>
+	<% @lista.each do |task| %>
+
+		<li>
+			<%= task.title %>
+			<a href="<%= ver_tarea_url(id: task.id) %>">Ver</a>
+			<a href="<%= editar_tarea_url(id: task.id) %>">Editar</a>
+
+<!-- 			<%= form_tag eliminar_tarea_url(id: task.id), method: :delete do %>
+				<%= submit_tag 'Eliminar' %>
+			<% end %> -->
+
+			<%= link_to 'Eliminar', eliminar_tarea_url(id: task.id), method: :delete %>
+
+		</li>
+
+	<% end %>
+</ul>

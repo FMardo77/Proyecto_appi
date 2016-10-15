@@ -1,0 +1,14 @@
+<h1>Add a new task</h1>
+<%= form_tag("/tasks/crear", method: :post) do%>
+	<p><%= text_field_tag :title %></p>
+
+	<p><%= date_field_tag(:due_date) %></p>
+	<p><%= text_area_tag(:description) %></p>
+
+	<p><%= submit_tag 'Crear'  %> <a href="<%= lista_tareas_url %>">Cancelar</a> </p>
+
+<% end %>
+
+
+<!-- http://labweb-ad15.cloudapp.net:PUERTO/tasks/nueva
+rails server -p 3000 -b 0.0.0.0 -->

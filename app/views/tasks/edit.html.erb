@@ -1,0 +1,11 @@
+<h1>Editing a task</h1>
+
+<%= form_tag(actualizar_tarea_url({id: @tarea.id}), method: :post) do%>
+	<p><%= text_field_tag :title, @tarea.title %></p>
+
+	<p><%= date_field_tag(:due_date, @tarea.due_date) %></p>
+	<p><%= text_area_tag(:description, @tarea.description) %></p>
+
+	<p><%= submit_tag 'Actualizar'  %> <a href="<%= lista_tareas_url %>">Cancelar</a> </p>
+
+<% end %>
