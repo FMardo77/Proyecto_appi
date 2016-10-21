@@ -4,9 +4,9 @@ class Task < ActiveRecord::Base
 	# Validations
 	validates(:title, { presence: true, length: {in: 1..255}, uniqueness: true})
 	# Function/Action
-	def complete
-		self.complete = true
-	end
+	# def complete
+	# 	self.complete = true
+	# end
 	# Callbacks
 	# before_save
 	# after_save

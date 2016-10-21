@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # /tasks/214
   get 'tasks/:id' => 'tasks#show', as: :ver_tarea
   get 'tasks/:id/editar' => 'tasks#edit', as: :editar_tarea
-  post 'tasks/:id/update' => 'tasks#update', as: :actualizar_tarea
+  put 'tasks/:id/update' => 'tasks#update', as: :actualizar_tarea
   delete 'tasks/:id/delete' => 'tasks#delete', as: :eliminar_tarea
   # get 'tasks/:id/delete' => 'tasks#delete', as: :eliminar_get_tarea
 

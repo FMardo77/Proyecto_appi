@@ -15,12 +15,13 @@ class TasksController < ApplicationController
     @tarea = Task.where({id: received_id}).first
 
     @tarea.update_attributes({
-      title: params[:title],
-      due_date: params[:due_date],
-      description: params[:description]
+      title: params[:task][:title],
+      due_date: params[:task][:due_date],
+      description: params[:task][:description],
+      complete: params[:task][:complete]
     })
 
-    redirect_to({action: :show})
+    render json: {task: @tarea}
   end
 
   def edit
