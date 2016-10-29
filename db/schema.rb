@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160902154156) do
+ActiveRecord::Schema.define(version: 20161029172321) do
 
   create_table "members", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20160902154156) do
     t.string   "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.float    "price"
+    t.string   "tipe"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -80,6 +89,9 @@ ActiveRecord::Schema.define(version: 20160902154156) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
+    t.string   "lastn"
+    t.string   "phone"
+    t.string   "email"
   end
 
 end

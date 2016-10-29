@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -48,3 +48,4 @@ end
 
 gem 'doorkeeper'
 gem 'jwt'
+gem 'tzinfo-data'
