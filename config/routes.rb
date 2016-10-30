@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   get 'tasks/list', as: :lista_tareas
   get 'users/list', as: :lista_usuarios
   get 'menus/list', as: :lista_menus
+  get 'products/list', as: :lista_productos
   # get 'tasks/lists' => 'tasks#list'
   #
   get 'tasks/nueva' => 'tasks#new', as: :nueva_tarea
   get 'users/nueva' => 'users#new', as: :nuevo_usuario
   get 'menus/list' => 'menus#new', as: :nuevo_menu
+  get 'products/list' => 'products#new', as: :nuevo_producto
 
   post 'tasks/crear' => 'tasks#create'
   post 'users/crear' => 'users#create'
