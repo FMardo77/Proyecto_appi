@@ -1,9 +1,8 @@
-class CreateProducts < ActiveRecord::Migration
+class CreateTypes < ActiveRecord::Migration
   def change
-    create_table :products do |t|
+    create_table :types do |t|
       t.string :name
       t.string :description
-      t.string :tipo
 
       t.timestamps null: false
     end

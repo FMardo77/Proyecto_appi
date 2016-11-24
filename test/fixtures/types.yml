@@ -3,13 +3,7 @@
 one:
   name: MyString
   description: MyString
-  price: 1.5
-  available: false
-  type_id: 
 
 two:
   name: MyString
   description: MyString
-  price: 1.5
-  available: false
-  type_id: 

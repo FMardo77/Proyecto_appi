@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 	has_secure_password
 
-	has_many(:tasks)
-	# has_one(:task)
+	has_many(:orders)
+	has_one(:profile)
 end

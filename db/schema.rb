@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029223831) do
+ActiveRecord::Schema.define(version: 20161124192118) do
 
-  create_table "members", force: :cascade do |t|
-    t.string   "name"
-    t.string   "position"
-    t.string   "phone"
+  create_table "comments", force: :cascade do |t|
+    t.string   "mail"
+    t.string   "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,13 +70,49 @@ ActiveRecord::Schema.define(version: 20161029223831) do
 
   add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
 
+  create_table "orders", force: :cascade do |t|
+    t.date     "date"
+    t.float    "amount"
+    t.boolean  "status"
+    t.boolean  "paid"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
+
+  create_table "orders_products", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "product_id"
+  end
+
+  add_index "orders_products", ["order_id"], name: "index_orders_products_on_order_id"
+  add_index "orders_products", ["product_id"], name: "index_orders_products_on_product_id"
+
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.string   "tipo"
+    t.float    "price"
+    t.boolean  "available"
+    t.integer  "type_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "products", ["type_id"], name: "index_products_on_type_id"
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "name"
+    t.string   "lastn"
+    t.string   "mail"
+    t.string   "phone"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
@@ -91,15 +126,19 @@ ActiveRecord::Schema.define(version: 20161029223831) do
 
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
 
+  create_table "types", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "username"
-    t.string   "name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "password_digest"
-    t.string   "lastn"
-    t.string   "phone"
-    t.string   "email"
+    t.integer  "levelg",          default: 0
   end
 
 end

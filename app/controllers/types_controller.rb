@@ -1,7 +1,7 @@
-class UsersController < ApplicationController
-	def list
-  	@lista = User.last(100)
-    render json: {users: @lista}
+class TypesController < ApplicationController
+  def list
+  	@lista = Type.last(100)
+    render json: {Types: @lista}
   end
 
   def new
@@ -9,32 +9,32 @@ class UsersController < ApplicationController
 
   def update
     received_id = params[:id]
-    @usuario = User.where({id: received_id}).first
+    @tipoprod = Type.where({id: received_id}).first
 
-    @usuario.update_attributes({
-      password_digest: params[:user][:password_digest],
-      username: params[:user][:username]
+    @tipoprod.update_attributes({
+      name: params[:Type][:name],
+      description: params[:Type][:description],
     })
 
-    render json: {User: @usuario}
+    render json: {Type: @tipoprod}
   end
 
   def edit
     received_id = params[:id]
-    @usuario = User.where({id: received_id}).first
+    @tipoprod = Type.where({id: received_id}).first
   end
 
-  # ver_usuario
+  # ver_tipoprod
   def show
     received_id = params[:id]
-    @usuario = User.where({id: received_id}).first
-    render json: {User: @usuario}
+    @tipoprod = Type.where({id: received_id}).first
+    render json: {Type: @tipoprod}
   end
 
   def delete
     # permisos <=
     id = params[:id].to_i # param is missing => 0; param != integer => integer
-    t = User.where(id: id).first # User.delete(id)
+    t = Type.where(id: id).first # Type.delete(id)
 
     if t.nil?
       respond_to do |format|
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         #   return redirect_to action: :list
         # }
       end
-    else # a User exists
+    else # a Type exists
       t.destroy # t.delete
       respond_to do |format|
         format.any{
@@ -61,13 +61,17 @@ class UsersController < ApplicationController
 
   def create
   	# params - Hash
-  	t = User.new({
-  			username: params[:user][:username],
-        password: params[:user][:password_digest],
-
+  	t = Type.new({
+  			name: params[:Type][:name],
+  			description: params[:Type][:description],
   		})
 
   	t.save
-    return render json: {user: t}
+    return render json: {Type: t}
   end
+
+  private
+    def authenticate
+      return redirect_to :login if cookies[:user_id].to_s.empty?
+    end
 end
