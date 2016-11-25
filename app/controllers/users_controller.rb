@@ -63,11 +63,15 @@ class UsersController < ApplicationController
   	# params - Hash
   	t = User.new({
   			username: params[:user][:username],
-        password: params[:user][:password_digest],
+        password: params[:user][:password],
+        password_confirmation: params[:user][:password]
 
   		})
 
-  	t.save
-    return render json: {user: t}
+  	if t.save
+      return render json: {user: t}
+    else
+      return render json: { errors: t.errors }, status: 422
+    end
   end
 end

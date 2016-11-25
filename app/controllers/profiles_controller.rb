@@ -64,11 +64,11 @@ class ProfilesController < ApplicationController
   def create
   	# params - Hash
   	pr = Profile.new({
-      name: params[:Profile][:name],
-      lastn: params[:Profile][:lastn],
-      mail: params[:Profile][:mail],
-      phone: params[:Profile][:phone],
-
+      name: params[:profile][:name],
+      lastn: params[:profile][:lastn],
+      mail: params[:profile][:mail],
+      phone: params[:profile][:phone],
+      user_id: params[:profile][:user]
   		})
 
   	pr.save

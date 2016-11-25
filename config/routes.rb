@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   post 'users/crear' => 'users#create'
   post 'menus/crear'=> 'menus#create'
   post 'types/crear'=> 'types#create'
-
+  post 'profiles/crear'=> 'profiles#create'
   # /tasks/214
   get 'tasks/:id' => 'tasks#show', as: :ver_tarea
   get 'tasks/:id/editar' => 'tasks#edit', as: :editar_tarea

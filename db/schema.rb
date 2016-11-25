@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20161124192118) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "members", force: :cascade do |t|
+    t.string   "name"
+    t.string   "position"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "menus", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
@@ -135,10 +143,13 @@ ActiveRecord::Schema.define(version: 20161124192118) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string   "name"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "password_digest"
-    t.integer  "levelg",          default: 0
+    t.string   "lastn"
+    t.string   "phone"
+    t.string   "email"
   end
 
 end
