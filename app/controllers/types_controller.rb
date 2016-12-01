@@ -62,16 +62,14 @@ class TypesController < ApplicationController
   def create
   	# params - Hash
   	t = Type.new({
-  			name: params[:Type][:name],
-  			description: params[:Type][:description],
+  			name: params[:type][:name],
+  			description: params[:type][:description],
   		})
 
-  	t.save
-    return render json: {Type: t}
-  end
-
-  private
-    def authenticate
-      return redirect_to :login if cookies[:user_id].to_s.empty?
+if t.save
+      return render json: {type: t}
+    else
+      return render json: { errors: t.errors }, status: 422
     end
+end
 end

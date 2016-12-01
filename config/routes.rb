@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'tasks/nueva' => 'tasks#new', as: :nueva_tarea
   get 'users/nueva' => 'users#new', as: :nuevo_usuario
   get 'menus/nuevos' => 'menus#new', as: :nuevo_menu
-  get 'products/list' => 'products#new', as: :nuevo_producto
+  get 'products/nuevo' => 'products#new', as: :nuevo_producto
   get 'types/nuevo' => 'types#new', as: :nuevo_tipo
 
   post 'tasks/crear' => 'tasks#create'
