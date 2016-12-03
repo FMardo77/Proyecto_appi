@@ -66,7 +66,7 @@ class ProductsController < ApplicationController
   	pr = Product.new({
       name: params[:product][:name],
       description: params[:product][:description],
-      price: params[:roduct][:price],
+      price: params[:product][:price],
       available: params[:product][:available],
       type_id: params[:product][:type]
   		})

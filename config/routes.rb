@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'menus/list', as: :lista_menus
   get 'products/list', as: :lista_productos
   get 'types/list', as: :lista_tipos
+  get 'orders/list', as: :lista_ordenes
+  get 'comments/list', as: :lista_comentarios
   # get 'tasks/lists' => 'tasks#list'
   #
   get 'tasks/nueva' => 'tasks#new', as: :nueva_tarea
@@ -14,17 +16,25 @@ Rails.application.routes.draw do
   get 'menus/nuevos' => 'menus#new', as: :nuevo_menu
   get 'products/nuevo' => 'products#new', as: :nuevo_producto
   get 'types/nuevo' => 'types#new', as: :nuevo_tipo
+  get 'orders/nueva' => 'orders#new', as: :nueva_orden
+  get 'comments/nuevo' => 'comments#new', as: :nuevo_comentario
 
   post 'tasks/crear' => 'tasks#create'
   post 'users/crear' => 'users#create'
   post 'menus/crear'=> 'menus#create'
   post 'types/crear'=> 'types#create'
   post 'profiles/crear'=> 'profiles#create'
+  post 'orders/crear' => 'orders#create'
+  post 'comments/crear' => 'comments#create'
+  post 'products/crear' => 'products#create'
+
   # /tasks/214
   get 'tasks/:id' => 'tasks#show', as: :ver_tarea
   get 'tasks/:id/editar' => 'tasks#edit', as: :editar_tarea
   put 'tasks/:id/update' => 'tasks#update', as: :actualizar_tarea
   delete 'tasks/:id/delete' => 'tasks#delete', as: :eliminar_tarea
+  delete 'products/:id/delete' => 'products#delete', as: :eliminar_producto
+  delete 'comments/:id/delete' => 'comments#delete', as: :eliminar_comentario
   # get 'tasks/:id/delete' => 'tasks#delete', as: :eliminar_get_tarea
 
   get 'holamundo' => 'application#holamundo'
